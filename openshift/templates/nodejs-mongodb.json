@@ -29,8 +29,7 @@
       },
       "stringData": {
         "database-user": "${DATABASE_USER}",
-        "database-password": "${DATABASE_PASSWORD}",
-        "database-admin-password" : "${DATABASE_ADMIN_PASSWORD}"
+        "database-password": "${DATABASE_PASSWORD}"        
       }
     },
     {
@@ -225,16 +224,8 @@
                   {
                     "name": "MONGODB_DATABASE",
                     "value": "${DATABASE_NAME}"
-                  },
-                  {
-                    "name": "MONGODB_ADMIN_PASSWORD",
-                    "valueFrom": {
-                      "secretKeyRef" : {
-                        "name" : "${NAME}",
-                        "key" : "database-admin-password"
-                      }
-                    }
                   }
+                 
                 ],
                 "readinessProbe": {
                   "timeoutSeconds": 3,
@@ -361,15 +352,6 @@
                   {
                     "name": "MONGODB_DATABASE",
                     "value": "${DATABASE_NAME}"
-                  },
-                  {
-                    "name": "MONGODB_ADMIN_PASSWORD",
-                    "valueFrom": {
-                      "secretKeyRef" : {
-                        "name" : "${NAME}",
-                        "key" : "database-admin-password"
-                      }
-                    }
                   }
                 ],
                 "readinessProbe": {
@@ -465,7 +447,7 @@
       "displayName": "Git Repository URL",
       "description": "The URL of the repository with your application source code.",
       "required": true,
-      "value": "https://github.com/dhsoc/nodejs-ex.git"
+      "value": "https://github.com/sclorg/nodejs-ex.git"
     },
     {
       "name": "SOURCE_REPOSITORY_REF",
@@ -522,14 +504,7 @@
       "displayName": "Database Name",
       "required": true,
       "value": "sampledb"
-    },
-    {
-      "name": "DATABASE_ADMIN_PASSWORD",
-      "displayName": "Database Administrator Password",
-      "description": "Password for the database admin user.",
-      "generate": "expression",
-      "from": "[a-zA-Z0-9]{16}"
-    },
+    },   
     {
       "name": "NPM_MIRROR",
       "displayName": "Custom NPM Mirror URL",
